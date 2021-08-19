@@ -1,0 +1,18 @@
+1> http://127.0.0.1:8000/api/meals/mael_pk/rate_meal
+endpoint to update/create for specific meal using Meal viewset not rate
+views -> add add custom function with @ation decorator
+
+2> Meal list API to show the average rating and number of ratings
+models ->  add custom/function method in the model to calculate the avg and sum
+serializer -> add avg and sum to the fields
+
+3> url to request token of specific user
+
+4> only authenticated user can access CREATE and UPDATE
+
+5> register user
+    URL -> viewset > serializer > ser model = user default django
+    URL -> viewset > serializer > ser model = user custom abstract
+    
+
+6> general security checks
