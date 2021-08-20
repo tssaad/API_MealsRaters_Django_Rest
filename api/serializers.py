@@ -11,15 +11,15 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'password']
         extra_kwargs = {'password': {'write_only':True, 'required':True}} # to stop showing password in json
 
-    def create(self, validated_data):
-        user = User.objects.create(**validated_data)
-        token = Token.objects.create(user=user)
-        response = {
-            "message" : "User was created",
-            "result" : token,
-        }
-        return Response(response, status=status.HTTP_201_CREATED)
-        
+#    def create(self, validated_data):
+#        user = User.objects.create(**validated_data)
+#        token = Token.objects.create(user=user)
+#        response = {
+#            "message" : "User was created",
+#            "result" : token,
+#        }
+#        return Response(response, status=status.HTTP_201_CREATED)
+
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model= Profile
