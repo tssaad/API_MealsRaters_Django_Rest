@@ -32,6 +32,18 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = (AllowAny,)
 
     
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        token, created = Token.objects.get_or_create(user=serializer.instance)
+        response = {
+            "message" : "user was created",
+            "token" : token.key
+        }
+        return Response(response, status=status.HTTP_201_CREATED)
+
+    
     # in case you want to limit access when allowany
     #def list(self, request, *args, **kwargs):
     #   response = {"message":"You cannnot create rating in here"}
