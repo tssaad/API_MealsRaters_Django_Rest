@@ -22,16 +22,15 @@ class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
 
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
 
-    @action(detail=True, methods=['POST'])
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -44,9 +43,9 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(response, status=status.HTTP_201_CREATED)
 
     # in case you want to limit access when allowany
-    #def create(self, request, *args, **kwargs):
-    #    response = {"message":"You cannnot create rating in here"}
-    #    return Response(response, status=status.HTTP_400_BAD_REQUEST)
+    def list(self, request, *args, **kwargs):
+        response = {"message":"You cannnot create rating in here"}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
 
