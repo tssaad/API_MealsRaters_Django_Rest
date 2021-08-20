@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Meal, Rating
+from .models import Meal, Rating, Profile
 
-
+admin.site.register(Profile)
 
 class AdminMeal(admin.ModelAdmin):
     list_display = ['id', 'title', 'description']
