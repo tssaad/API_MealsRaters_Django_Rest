@@ -42,10 +42,11 @@ class UserViewSet(viewsets.ModelViewSet):
         }
         return Response(response, status=status.HTTP_201_CREATED)
 
+    
     # in case you want to limit access when allowany
-    def list(self, request, *args, **kwargs):
-        response = {"message":"You cannnot create rating in here"}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+    #def list(self, request, *args, **kwargs):
+    #   response = {"message":"You cannnot create rating in here"}
+    #    return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
 
