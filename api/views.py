@@ -14,8 +14,15 @@ from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAdminUser, IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
 
-from .models import Rating, Meal
-from .serializers import RatingSerializer, MealSerializer, UserSerializer
+from .models import Rating, Meal, Profile
+from .serializers import RatingSerializer, MealSerializer, UserSerializer, ProfileSerializer
+
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
 
 
 class UserViewSet(viewsets.ModelViewSet):

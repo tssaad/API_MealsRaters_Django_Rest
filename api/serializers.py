@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.http import response
 from rest_framework import serializers, status
 from rest_framework.authtoken.models import Token
-from .models import Meal, Rating
+from .models import Meal, Profile, Rating
 from rest_framework.response import Response
 
 class UserSerializer(serializers.ModelSerializer):
@@ -19,7 +19,11 @@ class UserSerializer(serializers.ModelSerializer):
 #            "result" : token,
 #        }
 #        return Response(response, status=status.HTTP_201_CREATED)
-
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model= Profile
+        fields = '__all__'
+        
 class MealSerializer(serializers.ModelSerializer):
     class Meta:
         model = Meal
